@@ -8,8 +8,8 @@ function App() {
   return (
     <UserProvider>
        <ReducerProvider>
-      <Header />
-        {useRoutes(routes)}
+         <Header />
+             {useRoutes(routes)}
         </ReducerProvider>
       </UserProvider>
   );

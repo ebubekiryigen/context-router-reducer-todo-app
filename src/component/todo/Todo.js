@@ -10,23 +10,23 @@ function TodoItem({todo,index}) {
 
     const UserTo = users.find(user => user.id === todo.userId)
 
-    const deleteTodo = useCallback((index) => {
+    const deleteTodo = useCallback((id) => {
         dispatch({
           type:'DELETE_TODO',
-          index
+          id
         })
       },[])
 
-      const toggleTodo = useCallback((index) => {
+      const toggleTodo = useCallback((id) => {
         dispatch({
           type:'COMPALTED_TODO',
-          index
+          id
         })
       },[])
-      const updateTodoItem = useCallback((index,value) => {
+      const updateTodoItem = useCallback((id,value) => {
         dispatch({
           type:'UPDATETODOITEM_TODO',
-          index,
+          id,
           value
         })
       },[])
@@ -40,12 +40,12 @@ function TodoItem({todo,index}) {
             "opacity-40" : todo.complated
         })}>
         {todo.userId === user.id && !todo.complated && (
-            <input type="text" onChange={e => updateTodoItem(index,e.target.value)} className="h-10 border-none w-[75%] bg-transparent" value={todo.title}  />
+            <input type="text" onChange={e => updateTodoItem(todo.id,e.target.value)} className="h-10 border-none w-[75%] bg-transparent" value={todo.title}  />
         )  || todo.title}
         {todo.userId === user.id && (
              <div className='flex gap-x-4'>
-             <button className="text-sm rounded-md bg-red-500 h-10 px-5  text-white"  onClick={() => deleteTodo(index)}>Sil</button>
-             <button className="text-sm rounded-md bg-green-500 h-10 px-5 text-white" onClick={()=> toggleTodo(index)}>{todo.complated ? 'Tamamlandı' : 'tamamla'}</button>
+             <button className="text-sm rounded-md bg-red-500 h-10 px-5  text-white"  onClick={() => deleteTodo(todo.id)}>Sil</button>
+             <button className="text-sm rounded-md bg-green-500 h-10 px-5 text-white" onClick={()=> toggleTodo(todo.id)}>{todo.complated ? 'Tamamlandı' : 'tamamla'}</button>
          </div>
         )}
          </div>

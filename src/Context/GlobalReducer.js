@@ -8,10 +8,7 @@ const Provider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer_todo, {
         todos: localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [],
         todo: '',
-        TodosSearch:'',
-        TodoOnlyMe:false,
         anonymous:false,
-		FilterTodo:false
        })
 
 	   useEffect(() => {
